@@ -1,0 +1,5 @@
+.venv_budget/
+__pycache__/
+*.pyc
+instance/
+
