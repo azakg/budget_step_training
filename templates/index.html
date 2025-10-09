@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="card shadow-sm">
+  <div class="card-body">
+    <h1 class="h4 mb-3">{{ title }}</h1>
+    <p class="text-muted">Это шаблон, отрендеренный через <code>render_template</code>.</p>
+  </div>
+</div>
+
+<div class="card mt-4">
+  <div class="card-body">
+    <h2 class="h5 mb-3">Сложение двух чисел</h2>
+
+    <form action="{{ url_for('sum_ab') }}" method="get" class="row gy-2 gx-3 align-items-center">
+      <div class="col-auto">
+        <label for="a" class="form-label">a</label>
+        <input type="number" step="any" class="form-control" id="a" name="a" value="{{ a|default('', true) }}">
+      </div>
+      <div class="col-auto">
+        <label for="b" class="form-label">b</label>
+        <input type="number" step="any" class="form-control" id="b" name="b" value="{{ b|default('', true) }}">
+      </div>
+      <div class="col-auto" style="margin-top: 32px;">
+        <button class="btn btn-primary" type="submit">Посчитать</button>
+      </div>
+    </form>
+
+    {% if a is defined and b is defined %}
+      <hr>
+      <p class="mb-0">Результат: <strong>{{ a }}</strong> + <strong>{{ b }}</strong> = <strong>{{ result }}</strong></p>
+    {% endif %}
+  </div>
+</div>
+
+{% endblock %}
